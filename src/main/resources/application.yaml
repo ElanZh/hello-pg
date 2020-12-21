@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hello_pg
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        format_sql: true
+
+decorator:
+  datasource:
+    p6spy:
+      logging: slf4j
+      log-format: 执行SQL- 耗时 %(executionTime)ms | 类型 %(category) | connection%(connectionId) | %(sqlSingleLine);
